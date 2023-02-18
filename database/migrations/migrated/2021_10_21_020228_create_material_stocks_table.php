@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateMaterialStocksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('material_stocks', function (Blueprint $table) {
+            $table->id();
+            $table->integer('branch_material_id');
+            $table->integer('qty');
+            $table->float('consumed');
+            $table->float('sold');
+            $table->integer('created_by');
+            $table->integer('updated_by');
+            $table->integer('exported');
+            $table->integer('uploaded');
+            $table->integer('updated');
+            $table->string('subscriber_code')->length(10);
+            $table->string('branch_code')->length(10);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('material_stocks');
+    }
+}
